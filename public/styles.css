@@ -1,0 +1,64 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+  
+  .overlay-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  #stopwatch-time {
+    font-size: 5em;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  }
+  
+  .progress-bar-wrapper {
+    width: 80%;
+    height: 30px;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 15px;
+    margin: 20px auto;
+    overflow: hidden;
+  }
+  
+  #progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #00ff00;
+    transition: width 0.2s linear;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  button:hover {
+    background: #333;
+  }
+  .work-hours-text {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    line-height: 30px;
+    font-family: Arial, sans-serif;
+  }
+  

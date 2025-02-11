@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch Overlay</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="overlay-container">
+    <div class="work-hours-text">Work Stopwatch</div>
+    <div id="stopwatch-time">00:00:00</div>
+    <div class="progress-bar-wrapper">
+      <div id="progress-bar"></div>
+    </div>
+    <div class="controls">
+      <button id="btnStartStop">Start / Stop</button>
+      <button id="btnReset">Reset</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
