@@ -16,6 +16,12 @@ The server has no user login and the timer resets when its process restarts. Use
 
 Questions and improvements are welcome in GitHub issues and pull requests.
 
+## Interface preview
+
+![OBS work timer interface in its local preview state](docs/media/obs-timer.png)
+
+The capture shows the static interface at zero time; it does not show a running server or synchronized timer.
+
 ## How it is wired
 
 ```mermaid
