@@ -1,35 +1,17 @@
-# ObsWorkTimerOverlay
-Stopwatch for OBS based on electron that allows me to track the amount of time worked
+# OBS Work Timer Overlay
 
-## Features
-- Electron-based UI that can run on any system with Node.js
-- Global hotkeys for starting/stopping and resetting
-- Simple web server for easy integration with OBS
+Put a running work stopwatch into an OBS scene and show progress toward an eight-hour timer target.
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Invictine/ObsWorkTimerOverlay.git
-   ```
-2. Navigate to the project folder:
-   ```bash
-   cd ObsWorkTimerOverlay
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Add it to an OBS scene
 
-## Usage
-1. Start the application:
-   ```bash
-   npm start
-   ```
-2. Open OBS and add a browser source pointing to:
-   ```
-   http://localhost:3000
-   ```
-3. Use the global hotkeys (Ctrl+Alt+S and Ctrl+Alt+R) to control the timer.
+1. Clone or download this repo, install Node.js, then run `npm ci` and `npm start` from the project folder.
+2. In OBS, add a **Browser** source and set the URL to `http://localhost:3000`. Size the source to fit your scene.
+3. Use **Start / Stop** and **Reset** in the timer window or through **Interact** on the Browser source. All open views share the same timer state while the server runs.
+
+To run the server without the Electron window, use `node server.js` after installing dependencies. The client has on-screen controls. The Electron build registers keyboard shortcuts, but the checked-in build does not wire their events through to the timer controls.
+
+The server has no user login and the timer resets when its process restarts. Use it on a trusted local computer or network.
 
 ## Contributing
-Contributions are welcome. Feel free to open issues or submit pull requests.
+
+Questions and improvements are welcome in GitHub issues and pull requests.
