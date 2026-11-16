@@ -15,3 +15,15 @@ The server has no user login and the timer resets when its process restarts. Use
 ## Contributing
 
 Questions and improvements are welcome in GitHub issues and pull requests.
+
+## How it is wired
+
+```mermaid
+flowchart LR
+  Electron[Electron window] --> Page[index.html and client.js]
+  OBS[OBS Browser source] --> Page
+  Page <-->|Socket.IO| Server[Express server]
+  Server --> Timer[In-memory stopwatch state]
+```
+
+The OBS browser source and Electron window connect to the same local Express/Socket.IO process, so they can display one running timer. There is no persistent timer database.
