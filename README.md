@@ -1,6 +1,6 @@
 # OBS Work Timer Overlay
 
-Streaming deep work sessions benefits from clear visual accountability without distracting visual clutter. This lightweight HTML/CSS/JavaScript overlay displays a high-visibility work stopwatch with start, stop, reset, and progress tracking, designed for direct integration as an OBS browser source. Clean local execution with zero external asset dependencies. Fork the overlay to customize color palettes or add custom interval alerts for your stream setup.
+I wanted a work timer that could live on stream without becoming a second clock to manage. This small app shares one stopwatch between an OBS Browser source and an Electron window, with start/stop/reset controls and progress toward an eight-hour target. It’s local and in-memory by design; adapt the target or styling for your own scene, and send a PR if you improve the overlay.
 
 [![OBS Work Timer Overlay](media/overview.png)](media/walkthrough.mp4)
 *Click preview above to watch recorded interface demo.*
