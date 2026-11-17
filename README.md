@@ -1,40 +1,39 @@
 # OBS Work Timer Overlay
 
-> **Dual-screen synchronized stream stopwatch and transparent OBS browser source.**
+Streaming deep work sessions benefits from clear visual accountability without distracting visual clutter. This lightweight HTML/CSS/JavaScript overlay displays a high-visibility work stopwatch with start, stop, reset, and progress tracking, designed for direct integration as an OBS browser source. Clean local execution with zero external asset dependencies. Fork the overlay to customize color palettes or add custom interval alerts for your stream setup.
 
-[![OBS Timer Preview](docs/media/obs-timer.png)](media/walkthrough.mp4)
+[![OBS Work Timer Overlay](media/overview.png)](media/walkthrough.mp4)
+*Click preview above to watch recorded interface demo.*
 
-*Click the preview card above to watch the stream overlay demo.*
 
----
+## Add it to an OBS scene
 
-## Why I Built This
+1. Clone or download this repo, install Node.js, then run `npm ci` and `npm start` from the project folder.
+2. In OBS, add a **Browser** source and set the URL to `http://localhost:3000`. Size the source to fit your scene.
+3. Use **Start / Stop** and **Reset** in the timer window or through **Interact** on the Browser source. All open views share the same timer state while the server runs.
 
-Streaming deep work or study sessions requires a timer that looks sharp on stream without cluttering your actual workspace. Window-capturing a desktop stopwatch app brings along unwanted window borders, menus, and DPI scaling quirks.
+To run the server without the Electron window, use `node server.js` after installing dependencies. The client has on-screen controls. The Electron build registers keyboard shortcuts, but the checked-in build does not wire their events through to the timer controls.
 
-ObsWorkTimerOverlay splits the timer into two parts: an Electron controller window that stays on your secondary monitor, and a pristine, transparent HTML5 browser source that plugs directly into OBS Studio via WebSockets.
+The server has no user login and the timer resets when its process restarts. Use it on a trusted local computer or network.
 
-## Standout Features
+## Contributing
 
-- **Transparent Browser Source:** Beautiful radial progress ring and high-legibility typography designed for 1080p and 4K stream overlays.
-- **Zero-Latency WebSocket Sync:** Start, pause, reset, or adjust work/break rounds from the controller with sub-millisecond sync.
-- **Configurable Visual Themes:** Customize accent colors, stroke width, and round durations to match your stream branding.
+Questions and improvements are welcome in GitHub issues and pull requests.
 
-## Visuals
+## Interface preview
 
-- **OBS Browser Overlay:** `docs/media/obs-timer.png`
-- **Recorded Demo:** `media/walkthrough.mp4`
+![OBS work timer interface in its local preview state](docs/media/obs-timer.png)
 
-## Setup & OBS Integration
+The capture shows the static interface at zero time; it does not show a running server or synchronized timer.
 
-1. Start the local server:
-   ```bash
-   cd ObsWorkTimerOverlay
-   npm install
-   npm start
-   ```
-2. In OBS Studio, add a new **Browser Source**:
-   - **URL:** `http://localhost:3000/overlay.html`
-   - **Width:** 1920
-   - **Height:** 1080
-   - Check **Shutdown source when not visible**.
+## How it is wired
+
+```mermaid
+flowchart LR
+  Electron[Electron window] --> Page[index.html and client.js]
+  OBS[OBS Browser source] --> Page
+  Page <-->|Socket.IO| Server[Express server]
+  Server --> Timer[In-memory stopwatch state]
+```
+
+The OBS browser source and Electron window connect to the same local Express/Socket.IO process, so they can display one running timer. There is no persistent timer database.
